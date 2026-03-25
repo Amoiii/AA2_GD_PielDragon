@@ -7,9 +7,9 @@ public class GameManager : MonoBehaviour
     [Header("Audios")]
     public AudioClip calmMusic;
     public AudioClip violentMusic;
-    public AudioClip dragonRoarClip; // <-- Nuevo hueco para el rugido
+    public AudioClip dragonRoarClip; 
 
-    // Necesitamos DOS reproductores para que no se corten entre sí
+    
     private AudioSource musicSource;
     private AudioSource sfxSource;
 
@@ -23,11 +23,11 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        // Creamos el reproductor de la música (en bucle)
+        //en bucle
         musicSource = gameObject.AddComponent<AudioSource>();
         musicSource.loop = true;
 
-        // Creamos el reproductor para los efectos (NO en bucle)
+        
         sfxSource = gameObject.AddComponent<AudioSource>();
         sfxSource.loop = false;
 
@@ -62,7 +62,7 @@ public class GameManager : MonoBehaviour
             musicSource.Play();
         }
 
-        Debug.Log("Música TRANQUILA... Escóndete.");
+        
     }
 
     void SetViolentMode()
@@ -70,19 +70,19 @@ public class GameManager : MonoBehaviour
         isViolentMusicOn = true;
         timer = Random.Range(minViolentTime, maxViolentTime);
 
-        // 1. Hacemos que suene el dragón INMEDIATAMENTE
+       
         if (dragonRoarClip != null)
         {
             sfxSource.PlayOneShot(dragonRoarClip);
         }
 
-        // 2. Preparamos la música violenta pero... ¡Le decimos que espere 1 segundo!
+        
         if (violentMusic != null)
         {
             musicSource.clip = violentMusic;
-            musicSource.PlayDelayed(1f); // <-- Aquí está el retraso de 1 segundo
+            musicSource.PlayDelayed(0.2f); 
         }
 
-        Debug.Log("¡RUGIDO! La música violenta empieza en 1s...");
+        
     }
 }

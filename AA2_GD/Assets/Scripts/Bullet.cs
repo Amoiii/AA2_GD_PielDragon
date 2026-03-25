@@ -22,9 +22,9 @@ public class Bullet : MonoBehaviour
                 FindObjectOfType<PlayerHitbox>().KillEnemy();
                 Destroy(hit.gameObject);
             }
-            else if (targetTag == "Player") // <-- Cuando la bala da al jugador
+            else if (targetTag == "Player") 
             {
-                FindObjectOfType<PlayerHitbox>().TakeDamage(); // Te encoge de golpe
+                FindObjectOfType<PlayerHitbox>().TakeDamage(); 
             }
             Destroy(gameObject);
         }

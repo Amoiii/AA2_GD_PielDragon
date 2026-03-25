@@ -3,35 +3,56 @@ using UnityEngine;
 public class EnemyAI : MonoBehaviour
 {
     private Transform player;
-    public float speed = 2f;
+    private GameManager gameManager;
+
+    [Header("Estadísticas Aleatorias")]
+    public float minSpeed = 1f;
+    public float maxSpeed = 3.5f;
+    private float speed;
+
+    public float minFireRate = 1.5f;
+    public float maxFireRate = 3.5f;
+    private float fireRate;
+
     public GameObject bulletPrefab;
-    public float fireRate = 2f;
     private float nextFireTime;
 
-    private GameManager gameManager; // Necesita saber cómo está la música
+    [Header("Comportamiento")]
+    public float reactionTime = 1.5f; 
+    private bool wasViolentLastFrame = false; 
 
     // Variables para pasear al azar
     private Vector2 randomDirection;
-    private float changeDirectionTime = 2f; // Cambia de rumbo cada 2 segundos
+    private float changeDirectionTime = 2f;
     private float nextChangeTime;
 
     void Start()
     {
-        // El enemigo busca al jugador y al GameManager automáticamente al nacer
         player = GameObject.FindGameObjectWithTag("Player").transform;
         gameManager = FindObjectOfType<GameManager>();
 
-        PickRandomDirection(); // Elige su primer rumbo aleatorio
+        
+        speed = Random.Range(minSpeed, maxSpeed);
+        fireRate = Random.Range(minFireRate, maxFireRate);
+
+        PickRandomDirection();
     }
 
     void Update()
     {
-        // Si el GameManager no existe o el jugador ha muerto, no hace nada
         if (gameManager == null || player == null) return;
 
-        // 1. MODO VIOLENTO: Te persiguen y disparan
+        // Modo violento
         if (gameManager.isViolentMusicOn)
         {
+            
+            if (!wasViolentLastFrame)
+            {
+               
+                nextFireTime = Time.time + reactionTime;
+                wasViolentLastFrame = true;
+            }
+
             Vector2 direction = player.position - transform.position;
             transform.right = direction;
             transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
@@ -44,16 +65,15 @@ public class EnemyAI : MonoBehaviour
                 nextFireTime = Time.time + fireRate;
             }
         }
-        // 2. MODO TRANQUILO: Pasean a su bola
+        //modo tranqui
         else
         {
-            // Si toca cambiar de dirección, elige una nueva
+            wasViolentLastFrame = false; 
+
             if (Time.time >= nextChangeTime)
             {
                 PickRandomDirection();
             }
-
-            // Mira hacia la dirección aleatoria y camina un poco más despacio
             transform.right = randomDirection;
             transform.position += (Vector3)randomDirection * (speed * 0.5f) * Time.deltaTime;
         }
@@ -61,7 +81,6 @@ public class EnemyAI : MonoBehaviour
 
     void PickRandomDirection()
     {
-        // Elige una dirección al azar (arriba, abajo, izquierda, derecha o diagonales)
         randomDirection = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
         nextChangeTime = Time.time + changeDirectionTime;
     }

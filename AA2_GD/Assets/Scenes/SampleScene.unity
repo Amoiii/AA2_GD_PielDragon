@@ -317,6 +317,11 @@ MonoBehaviour:
   growthPerKill: 0.3
   shrinkPerHit: 0.2
   minSizeToDie: 0.1
+  spriteRenderer: {fileID: 146684482}
+  calmColor: {r: 1, g: 1, b: 1, a: 1}
+  dragonColor: {r: 0, g: 0, b: 0, a: 1}
+  calmSprite: {fileID: 7482667652216324306, guid: 92827722f3d9c624d9fcf19db9b3b3f6, type: 3}
+  dragonSprite: {fileID: 7482667652216324306, guid: 92827722f3d9c624d9fcf19db9b3b3f6, type: 3}
 --- !u!114 &146684485
 MonoBehaviour:
   m_ObjectHideFlags: 0
