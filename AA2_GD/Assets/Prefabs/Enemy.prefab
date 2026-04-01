@@ -177,5 +177,5 @@ MonoBehaviour:
   maxSpeed: 3.5
   minFireRate: 1.5
   maxFireRate: 3.5
-  bulletPrefab: {fileID: 5188978691586794626, guid: f59c38aafba85c540a6664453bf420f2, type: 3}
+  bulletPrefab: {fileID: 5188978691586794626, guid: c447e7b97f94db0428fb82bc07e7237f, type: 3}
   reactionTime: 1.5

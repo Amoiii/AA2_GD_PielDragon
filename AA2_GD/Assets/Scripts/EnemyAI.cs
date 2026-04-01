@@ -28,7 +28,6 @@ public class EnemyAI : MonoBehaviour
 
     void Start()
     {
-        // Buscamos al jugador de forma segura
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
         if (playerObj != null)
             player = playerObj.transform;
@@ -46,8 +45,7 @@ public class EnemyAI : MonoBehaviour
     void Update()
     {
         if (gameManager == null || player == null) return;
-
-        // Modo violento (Persigue y dispara)
+        
         if (gameManager.isViolentMusicOn)
         {
             if (!wasViolentLastFrame)
@@ -55,31 +53,23 @@ public class EnemyAI : MonoBehaviour
                 nextFireTime = Time.time + reactionTime;
                 wasViolentLastFrame = true;
             }
-
-            // Calculamos hacia d�nde est� el jugador
+            
             Vector2 direction = player.position - transform.position;
-
-            // Hacemos que el enemigo mire a izquierda/derecha sin rotar
+            
             FlipEnemy(direction);
-
-            // Movemos al enemigo
+            
             transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
-
-            // Disparo
+            
             if (Time.time >= nextFireTime)
             {
-                // Calculamos la rotaci�n matem�tica para que la BALA mire hacia el jugador
                 float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
                 Quaternion bulletRotation = Quaternion.Euler(0, 0, angle);
-
-                // Instanciamos la bala con su rotaci�n correcta
+                
                 GameObject miBala = Instantiate(bulletPrefab, transform.position, bulletRotation);
                 miBala.GetComponent<Bullet>().targetTag = "Player";
-                miBala.GetComponent<Bullet>().speed = 5f;
                 nextFireTime = Time.time + fireRate;
             }
         }
-        // Modo tranqui (Pasea por el escenario)
         else
         {
             wasViolentLastFrame = false;
@@ -88,11 +78,9 @@ public class EnemyAI : MonoBehaviour
             {
                 PickRandomDirection();
             }
-
-            // Hacemos que mire hacia donde est� caminando
+            
             FlipEnemy(randomDirection);
-
-            // Movemos al enemigo
+            
             transform.position += (Vector3)randomDirection * (speed * 0.5f) * Time.deltaTime;
         }
     }
@@ -102,13 +90,11 @@ public class EnemyAI : MonoBehaviour
         randomDirection = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
         nextChangeTime = Time.time + changeDirectionTime;
     }
-
-    // --- NUEVO M�TODO PARA VOLTEAR AL ENEMIGO ---
+    
     void FlipEnemy(Vector2 direction)
     {
         Vector3 scale = transform.localScale;
-
-        // Si la direcci�n X es negativa (izquierda), escala negativa. Si es positiva (derecha), escala positiva.
+        
         if (direction.x < 0)
         {
             scale.x = -Mathf.Abs(scale.x);
