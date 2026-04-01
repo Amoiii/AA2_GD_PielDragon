@@ -18,8 +18,8 @@ public class EnemyAI : MonoBehaviour
     private float nextFireTime;
 
     [Header("Comportamiento")]
-    public float reactionTime = 1.5f; 
-    private bool wasViolentLastFrame = false; 
+    public float reactionTime = 1.5f;
+    private bool wasViolentLastFrame = false;
 
     // Variables para pasear al azar
     private Vector2 randomDirection;
@@ -51,39 +51,52 @@ public class EnemyAI : MonoBehaviour
     {
         if (gameManager == null || player == null) return;
 
-        // Modo violento
+        // Modo violento (Persigue y dispara)
         if (gameManager.isViolentMusicOn)
         {
-            
             if (!wasViolentLastFrame)
             {
-               
                 nextFireTime = Time.time + reactionTime;
                 wasViolentLastFrame = true;
             }
 
+            // Calculamos hacia dónde está el jugador
             Vector2 direction = player.position - transform.position;
-            transform.right = direction;
+
+            // Hacemos que el enemigo mire a izquierda/derecha sin rotar
+            FlipEnemy(direction);
+
+            // Movemos al enemigo
             transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
 
+            // Disparo
             if (Time.time >= nextFireTime)
             {
-                GameObject miBala = Instantiate(bulletPrefab, transform.position, transform.rotation);
+                // Calculamos la rotación matemática para que la BALA mire hacia el jugador
+                float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+                Quaternion bulletRotation = Quaternion.Euler(0, 0, angle);
+
+                // Instanciamos la bala con su rotación correcta
+                GameObject miBala = Instantiate(bulletPrefab, transform.position, bulletRotation);
                 miBala.GetComponent<Bullet>().targetTag = "Player";
                 miBala.GetComponent<Bullet>().speed = 5f;
                 nextFireTime = Time.time + fireRate;
             }
         }
-        //modo tranqui
+        // Modo tranqui (Pasea por el escenario)
         else
         {
-            wasViolentLastFrame = false; 
+            wasViolentLastFrame = false;
 
             if (Time.time >= nextChangeTime)
             {
                 PickRandomDirection();
             }
-            transform.right = randomDirection;
+
+            // Hacemos que mire hacia donde está caminando
+            FlipEnemy(randomDirection);
+
+            // Movemos al enemigo
             transform.position += (Vector3)randomDirection * (speed * 0.5f) * Time.deltaTime;
         }
     }
@@ -92,5 +105,23 @@ public class EnemyAI : MonoBehaviour
     {
         randomDirection = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
         nextChangeTime = Time.time + changeDirectionTime;
+    }
+
+    // --- NUEVO MÉTODO PARA VOLTEAR AL ENEMIGO ---
+    void FlipEnemy(Vector2 direction)
+    {
+        Vector3 scale = transform.localScale;
+
+        // Si la dirección X es negativa (izquierda), escala negativa. Si es positiva (derecha), escala positiva.
+        if (direction.x < 0)
+        {
+            scale.x = -Mathf.Abs(scale.x);
+        }
+        else if (direction.x > 0)
+        {
+            scale.x = Mathf.Abs(scale.x);
+        }
+
+        transform.localScale = scale;
     }
 }
