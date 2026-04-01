@@ -934,8 +934,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1374,8 +1374,8 @@ MonoBehaviour:
     Enabled: 0
     DefaultMode: 2
   DefaultBlend:
-    Style: 1
-    Time: 2
+    Style: 4
+    Time: 0.1
     CustomCurve:
       serializedVersion: 2
       m_Curve: []
@@ -2336,7 +2336,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.6431373, g: 0.0627451, b: 0.0627451, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2428,7 +2428,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2653,6 +2653,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MainCanvasManager
   lorePanel: {fileID: 1092355004}
   inGamePanel: {fileID: 927813460}
+  mainVCam: {fileID: 94224143}
+  introVCam: {fileID: 2042408827}
   mainMenuAnimator: {fileID: 193314919}
 --- !u!1 &1534008076
 GameObject:
@@ -2711,9 +2713,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "El trauma ech\xF3 ra\xEDces en su mente. Consumido por la paranoia y los
-    delirios, Emilio se convirti\xF3 en una bomba de relojer\xEDa. Un peligro impredecible
-    para los dem\xE1s... y para s\xED mismo"
+  m_text: "El trauma ech\xF3 ra\xEDces en su mente\n\nConsumido por la paranoia y
+    los delirios, Emilio se convirti\xF3 en una bomba de relojer\xEDa\n\nUn peligro
+    impredecible para los dem\xE1s... y para s\xED mismo"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2849,8 +2851,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Emilio sobrevivi\xF3 de milagro, pero el precio fue demasiado alto. Ella
-    no lo logr\xF3. El accidente se llev\xF3 a su esposa y, con ella, la poca cordura
+  m_text: "Emilio sobrevivi\xF3 de milagro, pero el precio fue demasiado alto\n\nElla
+    no lo logr\xF3\n\nEl accidente se llev\xF3 a su esposa y, con ella, la poca cordura
     que lo manten\xEDa anclado a la realidad"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3135,7 +3137,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -3261,9 +3263,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Emilio. Profesor de Bellas Artes en Barcelona. Su vida era un lienzo mon\xF3tono
-    y predecible, pero ella... su mujer, era el \xFAnico color que necesitaba para
-    encontrar la paz\n"
+  m_text: "Emilio\n\nProfesor de Bellas Artes en Barcelona\n\nSu vida era un lienzo
+    mon\xF3tono y predecible, pero ella... su mujer, era el \xFAnico color que necesitaba
+    para encontrar la paz\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3399,9 +3401,15 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Una noche cualquiera. Un trayecto en coche hacia el cine. Risas, luces
-    en la carretera... y de repente, el impacto. El metal retorcido y el cristal
-    roto silenciaron su mundo para siempre
+  m_text: 'Una noche cualquiera
+
+
+    Un trayecto en coche hacia el cine. Risas,
+    luces en la carretera... y de repente, el impacto
+
+
+    El metal retorcido y
+    el cristal roto silenciaron su mundo para siempre'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3611,7 +3619,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Ahora, su \xFAnico lienzo son las fr\xEDas paredes de un manicomio. Encerrado
+  m_text: "Ahora, su \xFAnico lienzo son las fr\xEDas paredes de un manicomio\n\nEncerrado
     y aislado, Emilio se hunde en sus recuerdos, esperando el momento en que su mente
     fragmentada termine por estallar"
   m_isRightToLeft: 0
@@ -3692,6 +3700,95 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1995096394}
   m_CullTransparentMesh: 1
+--- !u!1 &2042408826
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2042408828}
+  - component: {fileID: 2042408827}
+  - component: {fileID: 2042408829}
+  m_Layer: 0
+  m_Name: Intro - VCAM
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2042408827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2042408826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9dfa5b682dcd46bda6128250e975f58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineCamera
+  Priority:
+    Enabled: 1
+    m_Value: -1
+  OutputChannel: 1
+  StandbyUpdate: 2
+  m_StreamingVersion: 20241001
+  m_LegacyPriority: 0
+  Target:
+    TrackingTarget: {fileID: 146684483}
+    LookAtTarget: {fileID: 0}
+    CustomLookAtTarget: 0
+  Lens:
+    FieldOfView: 34
+    OrthographicSize: 1.5
+    NearClipPlane: 0.3
+    FarClipPlane: 1000
+    Dutch: 0
+    ModeOverride: 0
+    PhysicalProperties:
+      GateFit: 2
+      SensorSize: {x: 21.946, y: 16.002}
+      LensShift: {x: 0, y: 0}
+      FocusDistance: 10
+      Iso: 200
+      ShutterSpeed: 0.005
+      Aperture: 16
+      BladeCount: 5
+      Curvature: {x: 2, y: 11}
+      BarrelClipping: 0.25
+      Anamorphism: 0
+  BlendHint: 0
+--- !u!4 &2042408828
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2042408826}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2042408829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2042408826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bbc487eac85f9041aee502582e5579e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::IntroCamController
+  speed: 0.005
 --- !u!1 &2056123137
 GameObject:
   m_ObjectHideFlags: 0
@@ -4037,7 +4134,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -4263,3 +4360,4 @@ SceneRoots:
   - {fileID: 1474131255}
   - {fileID: 599438267}
   - {fileID: 94224144}
+  - {fileID: 2042408828}

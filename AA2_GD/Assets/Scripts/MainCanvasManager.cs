@@ -1,3 +1,4 @@
+using Unity.Cinemachine;
 using UnityEngine;
 
 public class MainCanvasManager : MonoBehaviour
@@ -7,6 +8,9 @@ public class MainCanvasManager : MonoBehaviour
     public GameObject lorePanel;
     public GameObject inGamePanel;
 
+    public CinemachineCamera mainVCam;
+    public CinemachineCamera introVCam;
+    
     public Animator mainMenuAnimator;
 
     #endregion
@@ -15,6 +19,9 @@ public class MainCanvasManager : MonoBehaviour
     {
         lorePanel.SetActive(false);
         inGamePanel.SetActive(true);
+        
+        introVCam.Priority = -1;
+        mainVCam.Priority = 10;
         // Logica de inicial del juego
     }
     
@@ -23,6 +30,8 @@ public class MainCanvasManager : MonoBehaviour
     public void InitGame()
     {
         mainMenuAnimator.SetTrigger("IsTriggered");
+        mainVCam.Priority = -1;
+        introVCam.Priority = 10;
     }
     
     public void QuitGame()
