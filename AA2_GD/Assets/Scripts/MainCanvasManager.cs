@@ -1,5 +1,7 @@
+using System;
 using Unity.Cinemachine;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MainCanvasManager : MonoBehaviour
 {
@@ -9,6 +11,7 @@ public class MainCanvasManager : MonoBehaviour
 
     public GameObject lorePanel;
     public GameObject inGamePanel;
+    public GameObject losePanel;
 
     public CinemachineCamera mainVCam;
     public CinemachineCamera introVCam;
@@ -18,6 +21,16 @@ public class MainCanvasManager : MonoBehaviour
 
     #endregion
 
+    private void OnEnable()
+    {
+        PlayerHitbox.OnPlayerDeath += ShowLosePanel;
+    }
+
+    private void OnDisable()
+    {
+        PlayerHitbox.OnPlayerDeath -= ShowLosePanel;
+    }
+
     public void StartGame()
     {
         lorePanel.SetActive(false);
@@ -26,8 +39,7 @@ public class MainCanvasManager : MonoBehaviour
         introVCam.Priority = -1;
         inGameVCam.Priority = 10;
         
-        gameManager.InitializeGame();
-    }
+        gameManager.InitializeGame(); }
     
     #region Main Menu Methods
 
@@ -44,4 +56,15 @@ public class MainCanvasManager : MonoBehaviour
     }
 
     #endregion
+
+    public void ShowLosePanel()
+    {
+        losePanel.SetActive(true);
+        inGamePanel.SetActive(false);
+    }
+
+    public void RetryGameButton()
+    {
+        SceneManager.LoadScene(0);
+    }
 }

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PlayerHitbox : MonoBehaviour
@@ -10,7 +11,7 @@ public class PlayerHitbox : MonoBehaviour
     public float growthPerKill = 0.3f;
     public float shrinkPerHit = 0.4f;
     public float minSizeToDie = 0.1f;
-    public float maxSize = 3f; // LÍMITE MÁXIMO: Para no volverte un gigante imparable
+    public float maxSize = 3f; // Limite Maximo: Para no volverte un gigante imparable
 
     [Header("Visuals")]
     public SpriteRenderer spriteRenderer;
@@ -18,13 +19,13 @@ public class PlayerHitbox : MonoBehaviour
     public Color dragonColor = Color.black;
     public Sprite calmSprite;
     public Sprite dragonSprite;
-
-    // Guardamos el tamaño absoluto aquí para no liarnos con los números negativos del flip
+    
     private float currentSize;
+    
+    public static Action OnPlayerDeath;
 
     void Start()
     {
-        // Al empezar, cogemos el tamaño inicial (siempre en positivo)
         currentSize = Mathf.Abs(transform.localScale.y);
     }
 
@@ -36,8 +37,7 @@ public class PlayerHitbox : MonoBehaviour
         {
             // Encogemos restando a nuestra variable, NO a la escala directamente
             currentSize -= shrinkSpeed * Time.deltaTime;
-
-            // Modo Dragón
+            
             spriteRenderer.color = dragonColor;
             if (dragonSprite != null) spriteRenderer.sprite = dragonSprite;
         }
@@ -54,14 +54,12 @@ public class PlayerHitbox : MonoBehaviour
             Die();
             return;
         }
-
-        // Límite duro: No podemos crecer más del maxSize
+        
         if (currentSize > maxSize)
         {
             currentSize = maxSize;
         }
-
-        // Aplicamos el tamaño. Mantenemos el signo X que le dio el PlayerMovement (Flip)
+        
         float signX = Mathf.Sign(transform.localScale.x);
         transform.localScale = new Vector3(currentSize * signX, currentSize, 1f);
     }
@@ -83,6 +81,7 @@ public class PlayerHitbox : MonoBehaviour
     void Die()
     {
         Debug.Log("GAME OVER: La locura te ha consumido.");
-        gameObject.SetActive(false);
+        //gameObject.SetActive(false);
+        OnPlayerDeath?.Invoke();
     }
 }

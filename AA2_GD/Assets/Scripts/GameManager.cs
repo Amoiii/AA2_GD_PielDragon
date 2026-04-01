@@ -26,8 +26,8 @@ public class GameManager : MonoBehaviour
     public EnemySpawner enemySpawner;
 
     [Header("Escenarios (Grids)")]
-    public GameObject normalGrid;  // Arrastra aquí el Grid normal
-    public GameObject dragonGrid;  // Arrastra aquí el Grid destruido/violento
+    public GameObject normalGrid;  // Arrastra aquï¿½ el Grid normal
+    public GameObject dragonGrid;  // Arrastra aquï¿½ el Grid destruido/violento
 
     #endregion
 
@@ -111,5 +111,11 @@ public class GameManager : MonoBehaviour
         isInGame = true;
         player.SetPlayerState(true);
         enemySpawner.isActive = true;
+    }
+
+    public void PlayerDeath()
+    {
+        isInGame = false;
+        musicSource.Stop();
     }
 }

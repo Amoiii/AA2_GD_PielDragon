@@ -5,7 +5,7 @@ public class EnemyAI : MonoBehaviour
     private Transform player;
     private GameManager gameManager;
 
-    [Header("Estadísticas Aleatorias")]
+    [Header("Estadï¿½sticas Aleatorias")]
     public float minSpeed = 1f;
     public float maxSpeed = 3.5f;
     private float speed;
@@ -31,13 +31,9 @@ public class EnemyAI : MonoBehaviour
         // Buscamos al jugador de forma segura
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
         if (playerObj != null)
-        {
             player = playerObj.transform;
-        }
         else
-        {
-            Debug.LogError("ERROR: ¡El enemigo no encuentra al Player! Asegúrate de ponerle el Tag 'Player' al jugador en Unity.");
-        }
+            Debug.LogError("ERROR: No hay player");
 
         gameManager = FindObjectOfType<GameManager>();
 
@@ -60,7 +56,7 @@ public class EnemyAI : MonoBehaviour
                 wasViolentLastFrame = true;
             }
 
-            // Calculamos hacia dónde está el jugador
+            // Calculamos hacia dï¿½nde estï¿½ el jugador
             Vector2 direction = player.position - transform.position;
 
             // Hacemos que el enemigo mire a izquierda/derecha sin rotar
@@ -72,11 +68,11 @@ public class EnemyAI : MonoBehaviour
             // Disparo
             if (Time.time >= nextFireTime)
             {
-                // Calculamos la rotación matemática para que la BALA mire hacia el jugador
+                // Calculamos la rotaciï¿½n matemï¿½tica para que la BALA mire hacia el jugador
                 float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
                 Quaternion bulletRotation = Quaternion.Euler(0, 0, angle);
 
-                // Instanciamos la bala con su rotación correcta
+                // Instanciamos la bala con su rotaciï¿½n correcta
                 GameObject miBala = Instantiate(bulletPrefab, transform.position, bulletRotation);
                 miBala.GetComponent<Bullet>().targetTag = "Player";
                 miBala.GetComponent<Bullet>().speed = 5f;
@@ -93,7 +89,7 @@ public class EnemyAI : MonoBehaviour
                 PickRandomDirection();
             }
 
-            // Hacemos que mire hacia donde está caminando
+            // Hacemos que mire hacia donde estï¿½ caminando
             FlipEnemy(randomDirection);
 
             // Movemos al enemigo
@@ -107,12 +103,12 @@ public class EnemyAI : MonoBehaviour
         nextChangeTime = Time.time + changeDirectionTime;
     }
 
-    // --- NUEVO MÉTODO PARA VOLTEAR AL ENEMIGO ---
+    // --- NUEVO Mï¿½TODO PARA VOLTEAR AL ENEMIGO ---
     void FlipEnemy(Vector2 direction)
     {
         Vector3 scale = transform.localScale;
 
-        // Si la dirección X es negativa (izquierda), escala negativa. Si es positiva (derecha), escala positiva.
+        // Si la direcciï¿½n X es negativa (izquierda), escala negativa. Si es positiva (derecha), escala positiva.
         if (direction.x < 0)
         {
             scale.x = -Mathf.Abs(scale.x);
