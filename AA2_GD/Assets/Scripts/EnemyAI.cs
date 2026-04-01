@@ -28,10 +28,19 @@ public class EnemyAI : MonoBehaviour
 
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        // Buscamos al jugador de forma segura
+        GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+        if (playerObj != null)
+        {
+            player = playerObj.transform;
+        }
+        else
+        {
+            Debug.LogError("ERROR: ¡El enemigo no encuentra al Player! Asegúrate de ponerle el Tag 'Player' al jugador en Unity.");
+        }
+
         gameManager = FindObjectOfType<GameManager>();
 
-        
         speed = Random.Range(minSpeed, maxSpeed);
         fireRate = Random.Range(minFireRate, maxFireRate);
 
