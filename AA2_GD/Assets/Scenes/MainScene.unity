@@ -376,6 +376,7 @@ GameObject:
   - component: {fileID: 146684482}
   - component: {fileID: 146684481}
   - component: {fileID: 146684480}
+  - component: {fileID: 146684486}
   - component: {fileID: 146684479}
   - component: {fileID: 146684484}
   - component: {fileID: 146684485}
@@ -398,6 +399,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14e3f48f1bdb50146942cededb946e6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
+  isActive: 0
   moveSpeed: 10
 --- !u!61 &146684480
 BoxCollider2D:
@@ -557,6 +559,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd2a36614981d984e9fae934f3b0a273, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHitbox
+  isActive: 0
   gameManager: {fileID: 902273991}
   shrinkSpeed: 0.1
   growthPerKill: 0.3
@@ -579,8 +582,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc40d6a4cd7903b4ca00d68b761209c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerShooting
+  isActive: 0
   gameManager: {fileID: 902273991}
   bulletPrefab: {fileID: 5188978691586794626, guid: f59c38aafba85c540a6664453bf420f2, type: 3}
+--- !u!114 &146684486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 146684478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d91238f1eecbeb4db286b87a52306dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Player
 --- !u!1 &162950020
 GameObject:
   m_ObjectHideFlags: 0
@@ -1575,6 +1591,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0c5745bdfe746043ba2c3bd1a8d574a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
+  isActive: 0
   enemyPrefab: {fileID: 1576779779280333145, guid: 059f878a19097804da621b62684a2ff6, type: 3}
   spawnRate: 3
 --- !u!4 &754297087
@@ -1908,7 +1925,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7832c09929fc66f4ab89d8c589dcfb28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  isInGame: 0
   isViolentMusicOn: 0
+  player: {fileID: 146684486}
   calmMusic: {fileID: 8300000, guid: e38b736b866459e46a35e3ee59afcd16, type: 3}
   violentMusic: {fileID: 8300000, guid: 93d796640b1a9a8449c9e320cc4dda33, type: 3}
   dragonRoarClip: {fileID: 8300000, guid: 6fdfed5704e95734cabca9bf82b14296, type: 3}
@@ -1916,6 +1935,7 @@ MonoBehaviour:
   maxCalmTime: 10
   minViolentTime: 7
   maxViolentTime: 15
+  enemySpawner: {fileID: 754297086}
 --- !u!1 &927813460
 GameObject:
   m_ObjectHideFlags: 0
@@ -2071,6 +2091,81 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1092355004}
   m_CullTransparentMesh: 1
+--- !u!1 &1096342414
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1096342416}
+  - component: {fileID: 1096342415}
+  m_Layer: 0
+  m_Name: InGame - VCAM
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1096342415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1096342414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9dfa5b682dcd46bda6128250e975f58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineCamera
+  Priority:
+    Enabled: 1
+    m_Value: -1
+  OutputChannel: 1
+  StandbyUpdate: 2
+  m_StreamingVersion: 20241001
+  m_LegacyPriority: 0
+  Target:
+    TrackingTarget: {fileID: 146684483}
+    LookAtTarget: {fileID: 0}
+    CustomLookAtTarget: 0
+  Lens:
+    FieldOfView: 34
+    OrthographicSize: 6
+    NearClipPlane: 0.3
+    FarClipPlane: 1000
+    Dutch: 0
+    ModeOverride: 0
+    PhysicalProperties:
+      GateFit: 2
+      SensorSize: {x: 21.946, y: 16.002}
+      LensShift: {x: 0, y: 0}
+      FocusDistance: 10
+      Iso: 200
+      ShutterSpeed: 0.005
+      Aperture: 16
+      BladeCount: 5
+      Curvature: {x: 2, y: 11}
+      BarrelClipping: 0.25
+      Anamorphism: 0
+  BlendHint: 0
+--- !u!4 &1096342416
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1096342414}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1317395208
 GameObject:
   m_ObjectHideFlags: 0
@@ -2603,15 +2698,15 @@ Canvas:
   m_GameObject: {fileID: 1474131251}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 1
-  m_Camera: {fileID: 0}
+  m_RenderMode: 0
+  m_Camera: {fileID: 519420031}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_VertexColorAlwaysGammaSpace: 0
+  m_VertexColorAlwaysGammaSpace: 1
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
@@ -2651,10 +2746,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84335b6bf71f0434eb5d388b84512b2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MainCanvasManager
+  gameManager: {fileID: 902273991}
   lorePanel: {fileID: 1092355004}
   inGamePanel: {fileID: 927813460}
   mainVCam: {fileID: 94224143}
   introVCam: {fileID: 2042408827}
+  inGameVCam: {fileID: 1096342415}
   mainMenuAnimator: {fileID: 193314919}
 --- !u!1 &1534008076
 GameObject:
@@ -4361,3 +4458,4 @@ SceneRoots:
   - {fileID: 599438267}
   - {fileID: 94224144}
   - {fileID: 2042408828}
+  - {fileID: 1096342416}

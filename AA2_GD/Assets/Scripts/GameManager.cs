@@ -2,7 +2,13 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    #region Variables
+
+    public bool isInGame;
+    
     public bool isViolentMusicOn = false;
+    
+    public Player player;
 
     [Header("Audios")]
     public AudioClip calmMusic;
@@ -21,9 +27,26 @@ public class GameManager : MonoBehaviour
 
     private float timer;
 
+    public EnemySpawner enemySpawner;
+
+    #endregion
+
     void Start()
     {
-        //en bucle
+        InitialSettings();
+    }
+
+    void Update()
+    {
+        if (!isInGame) return;
+        
+        TickSettings();
+    }
+
+    void InitialSettings()
+    {
+        player.SetPlayerState(false);
+        
         musicSource = gameObject.AddComponent<AudioSource>();
         musicSource.loop = true;
 
@@ -34,23 +57,19 @@ public class GameManager : MonoBehaviour
         SetCalmMode();
     }
 
-    void Update()
+    void TickSettings()
     {
         timer -= Time.deltaTime;
 
         if (timer <= 0)
         {
             if (isViolentMusicOn)
-            {
                 SetCalmMode();
-            }
             else
-            {
                 SetViolentMode();
-            }
         }
     }
-
+    
     void SetCalmMode()
     {
         isViolentMusicOn = false;
@@ -61,28 +80,29 @@ public class GameManager : MonoBehaviour
             musicSource.clip = calmMusic;
             musicSource.Play();
         }
-
-        
     }
 
     void SetViolentMode()
     {
         isViolentMusicOn = true;
         timer = Random.Range(minViolentTime, maxViolentTime);
-
-       
+        
         if (dragonRoarClip != null)
         {
             sfxSource.PlayOneShot(dragonRoarClip);
         }
-
         
         if (violentMusic != null)
         {
             musicSource.clip = violentMusic;
             musicSource.PlayDelayed(0.2f); 
         }
+    }
 
-        
+    public void InitializeGame()
+    {
+        isInGame = true;
+        player.SetPlayerState(true);
+        enemySpawner.isActive = true;
     }
 }

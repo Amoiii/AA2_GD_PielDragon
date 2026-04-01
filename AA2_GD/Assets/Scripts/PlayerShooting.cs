@@ -2,11 +2,14 @@ using UnityEngine;
 
 public class PlayerShooting : MonoBehaviour
 {
+    public bool isActive;
+    
     public GameManager gameManager;
     public GameObject bulletPrefab;
 
     void Update()
     {
+        if (!isActive) return;
         
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 direction = mousePos - transform.position;

@@ -4,12 +4,15 @@ using UnityEngine;
 public class MainCanvasManager : MonoBehaviour
 {
     #region Variables
+    
+    public GameManager gameManager;
 
     public GameObject lorePanel;
     public GameObject inGamePanel;
 
     public CinemachineCamera mainVCam;
     public CinemachineCamera introVCam;
+    public CinemachineCamera inGameVCam;
     
     public Animator mainMenuAnimator;
 
@@ -21,8 +24,9 @@ public class MainCanvasManager : MonoBehaviour
         inGamePanel.SetActive(true);
         
         introVCam.Priority = -1;
-        mainVCam.Priority = 10;
-        // Logica de inicial del juego
+        inGameVCam.Priority = 10;
+        
+        gameManager.InitializeGame();
     }
     
     #region Main Menu Methods

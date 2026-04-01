@@ -2,17 +2,20 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public bool isActive;
+    
     public float moveSpeed = 5f;
     private Rigidbody2D rb;
     private Vector2 movement;
 
-    void Start()
+    void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
     }
 
     void Update()
     {
+        if (!isActive) return;
         
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
@@ -20,7 +23,8 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-       
+        if (!isActive) return;
+        
         rb.MovePosition(rb.position + movement.normalized * moveSpeed * Time.fixedDeltaTime);
     }
 }
