@@ -13,7 +13,7 @@ public class PlayerShooting : MonoBehaviour
         
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 direction = mousePos - transform.position;
-        transform.right = direction; 
+        transform.right = direction;
 
         
         if (Input.GetMouseButtonDown(0) && gameManager.isViolentMusicOn)
