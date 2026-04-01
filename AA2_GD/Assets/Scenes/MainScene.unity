@@ -134,7 +134,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &34482275
 RectTransform:
   m_ObjectHideFlags: 0
@@ -268,9 +268,9 @@ RectTransform:
   - {fileID: 767679479}
   m_Father: {fileID: 304846993}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 179.1975, y: -104.017075}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 437.9163, y: 133.99}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &79893604
@@ -757,7 +757,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &193314916
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1047,8 +1047,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Seguir?
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c97d3bc2c7840ea439877e3308310384, type: 2}
+  m_sharedMaterial: {fileID: -4579466995108619685, guid: c97d3bc2c7840ea439877e3308310384, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1072,8 +1072,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 47
-  m_fontSizeBase: 47
+  m_fontSize: 41.2
+  m_fontSizeBase: 41.2
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2224,7 +2224,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1092355005
 RectTransform:
   m_ObjectHideFlags: 0
@@ -14883,7 +14883,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.6431373, g: 0.0627451, b: 0.0627451, a: 1}
+  m_Color: {r: 0, g: 1, b: 0.007030964, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -14967,8 +14967,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Seguir
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 1803e96468ccac041b4533ab3ddef27d, type: 2}
+  m_sharedMaterial: {fileID: 119726941438424324, guid: 1803e96468ccac041b4533ab3ddef27d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -14992,8 +14992,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 47
-  m_fontSizeBase: 47
+  m_fontSize: 80
+  m_fontSizeBase: 80
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -26733,8 +26733,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1503.1187, y: 695.1786}
+  m_AnchoredPosition: {x: 0, y: 169}
+  m_SizeDelta: {x: 1742.7676, y: 806.01}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1534008078
 MonoBehaviour:
@@ -26756,12 +26756,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "El trauma ech\xF3 ra\xEDces en su mente\n\nConsumido por la paranoia y
-    los delirios, Emilio se convirti\xF3 en una bomba de relojer\xEDa\n\nUn peligro
-    impredecible para los dem\xE1s... y para s\xED mismo"
+  m_text: "El trauma ech\xF3 ra\xEDces en su mente\n\n<color=red>Consumido</color>
+    por la paranoia y los delirios, Emilio se convirti\xF3 en una <color=green>bomba</color>
+    de relojer\xEDa\n\nUn <color=green>peligro</color> impredecible para los dem\xE1s...
+    y para <color=red><s>s\xED mismo</s></color>"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 1803e96468ccac041b4533ab3ddef27d, type: 2}
+  m_sharedMaterial: {fileID: 119726941438424324, guid: 1803e96468ccac041b4533ab3ddef27d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -26785,13 +26786,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 42.4
-  m_fontSizeBase: 42.4
+  m_fontSize: 70.3
+  m_fontSizeBase: 70.3
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -38989,8 +38990,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1503.1187, y: 695.1786}
+  m_AnchoredPosition: {x: 0, y: 142}
+  m_SizeDelta: {x: 1752.8701, y: 810.6864}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1995096396
 MonoBehaviour:
@@ -39012,12 +39013,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Ahora, su \xFAnico lienzo son las fr\xEDas paredes de un manicomio\n\nEncerrado
-    y aislado, Emilio se hunde en sus recuerdos, esperando el momento en que su mente
-    fragmentada termine por estallar"
+  m_text: "Ahora, su \xFAnico lienzo son las fr\xEDas paredes de un <color=red><s>manicomio</s></color>\n\nEncerrado
+    y aislado, <color=red><s>Emilio</s></color> se hunde en sus <color=green>recuerdos</color>,
+    esperando el momento en que su mente <color=red><s>fragmentada</s></color> termine
+    por <color=green>estallar</color>"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c97d3bc2c7840ea439877e3308310384, type: 2}
+  m_sharedMaterial: {fileID: -4579466995108619685, guid: c97d3bc2c7840ea439877e3308310384, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -39041,8 +39043,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 42.4
-  m_fontSizeBase: 42.4
+  m_fontSize: 63.7
+  m_fontSizeBase: 63.7
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -39216,9 +39218,9 @@ RectTransform:
   - {fileID: 276856350}
   m_Father: {fileID: 304846993}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 179.1975, y: -283.21457}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 201.2632, y: 76.3167}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2056123139
@@ -39435,7 +39437,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 1, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
