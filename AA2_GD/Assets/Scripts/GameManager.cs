@@ -5,17 +5,14 @@ public class GameManager : MonoBehaviour
     #region Variables
 
     public bool isInGame;
-    
     public bool isViolentMusicOn = false;
-    
     public Player player;
 
     [Header("Audios")]
     public AudioClip calmMusic;
     public AudioClip violentMusic;
-    public AudioClip dragonRoarClip; 
+    public AudioClip dragonRoarClip;
 
-    
     private AudioSource musicSource;
     private AudioSource sfxSource;
 
@@ -26,8 +23,11 @@ public class GameManager : MonoBehaviour
     public float maxViolentTime = 8f;
 
     private float timer;
-
     public EnemySpawner enemySpawner;
+
+    [Header("Escenarios (Grids)")]
+    public GameObject normalGrid;  // Arrastra aquí el Grid normal
+    public GameObject dragonGrid;  // Arrastra aquí el Grid destruido/violento
 
     #endregion
 
@@ -39,18 +39,17 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         if (!isInGame) return;
-        
+
         TickSettings();
     }
 
     void InitialSettings()
     {
         player.SetPlayerState(false);
-        
+
         musicSource = gameObject.AddComponent<AudioSource>();
         musicSource.loop = true;
 
-        
         sfxSource = gameObject.AddComponent<AudioSource>();
         sfxSource.loop = false;
 
@@ -69,11 +68,15 @@ public class GameManager : MonoBehaviour
                 SetViolentMode();
         }
     }
-    
+
     void SetCalmMode()
     {
         isViolentMusicOn = false;
         timer = Random.Range(minCalmTime, maxCalmTime);
+
+        // Activamos el mapa normal y apagamos el mapa violento
+        if (normalGrid != null) normalGrid.SetActive(true);
+        if (dragonGrid != null) dragonGrid.SetActive(false);
 
         if (calmMusic != null)
         {
@@ -86,16 +89,20 @@ public class GameManager : MonoBehaviour
     {
         isViolentMusicOn = true;
         timer = Random.Range(minViolentTime, maxViolentTime);
-        
+
+        // Activamos el mapa violento y apagamos el normal
+        if (normalGrid != null) normalGrid.SetActive(false);
+        if (dragonGrid != null) dragonGrid.SetActive(true);
+
         if (dragonRoarClip != null)
         {
             sfxSource.PlayOneShot(dragonRoarClip);
         }
-        
+
         if (violentMusic != null)
         {
             musicSource.clip = violentMusic;
-            musicSource.PlayDelayed(0.2f); 
+            musicSource.PlayDelayed(0.2f);
         }
     }
 
